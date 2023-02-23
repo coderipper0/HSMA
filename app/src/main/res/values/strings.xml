@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login</string>
-    <string name="signin_fragment_label">Registro</string>
+    <string name="sign_in_fragment_label">Registro</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -43,4 +43,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="action_login_desc">Login fab action</string>
+    <string name="action_sign_in_desc">Sign in fab action</string>
+    <string name="login_text">Ingresar</string>
+    <string name="signin_text">¡Unete a nosotros!</string>
+    <string name="password_text">Contraseña</string>
+    <string name="email_text">Correo electronico</string>
+    <string name="hsma_text">HSMA</string>
+    <string name="home_fragment_label">Home</string>
 </resources>

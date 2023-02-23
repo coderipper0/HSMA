@@ -14,15 +14,31 @@
         <action
             android:id="@+id/login_to_sign_in"
             app:destination="@id/SignInFragment" />
+
+        <action
+            android:id="@+id/login_to_home"
+            app:destination="@id/HomeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SignInFragment"
-        android:name="com.coderipper.hsma.usecases.signin.SigninFragment"
-        android:label="@string/signin_fragment_label"
-        tools:layout="@layout/fragment_signin">
+        android:name="com.coderipper.hsma.usecases.signin.SignInFragment"
+        android:label="@string/sign_in_fragment_label"
+        tools:layout="@layout/fragment_sign_in">
 
         <action
             android:id="@+id/sign_in_to_login"
-            app:destination="@id/SignInFragment" />
+            app:destination="@id/LoginFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.coderipper.hsma.usecases.home.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/home_to_login"
+            app:destination="@id/LoginFragment"/>
     </fragment>
 </navigation>

@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.coderipper.hsma.R
-import com.coderipper.hsma.databinding.FragmentFirstBinding
+import com.coderipper.hsma.databinding.FragmentLoginBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class LoginFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentLoginBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +25,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,8 +33,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.signInText.setOnClickListener {
+            findNavController().navigate(R.id.login_to_sign_in)
+        }
+
+        binding.loginFab.setOnClickListener {
+            findNavController().navigate(R.id.login_to_home)
         }
     }
 
