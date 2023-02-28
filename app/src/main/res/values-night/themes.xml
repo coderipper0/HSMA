@@ -3,5 +3,6 @@
     <style name="Base.Theme.HSMA" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.HSMA.SmallComponent</item>
     </style>
 </resources>

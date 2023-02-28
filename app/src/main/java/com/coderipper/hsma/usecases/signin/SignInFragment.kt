@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import com.coderipper.hsma.databinding.FragmentSigninBinding
+import com.coderipper.hsma.databinding.FragmentSignInBinding
 import com.coderipper.hsma.utils.createAvatarsModal
 
 /**
@@ -14,7 +14,7 @@ import com.coderipper.hsma.utils.createAvatarsModal
  */
 class SignInFragment : Fragment() {
 
-    private var _binding: FragmentSigninBinding? = null
+    private var _binding: FragmentSignInBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,9 +25,9 @@ class SignInFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentSigninBinding.inflate(inflater, container, false)
+        _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
 
     }
