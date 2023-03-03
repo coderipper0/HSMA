@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_800">#FF43484b</color>
-    <color name="primary_900">#FF222629</color>
+    <color name="primary_900">#FF004A5A</color>
 
-    <color name="secondary_50">#FFF2EEE9</color>
-    <color name="secondary_100">#FFDDD3CB</color>
+    <color name="primary_50">#FFDDD3CB</color>
+    <color name="primary_100">#FFDDD3CB</color>
 
     <color name="accent">#FF2A2B5C</color>
 

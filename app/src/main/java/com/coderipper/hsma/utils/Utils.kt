@@ -1,0 +1,16 @@
+package com.coderipper.hsma.utils
+
+import android.content.Context
+import android.util.DisplayMetrics
+import android.util.TypedValue
+import android.view.WindowManager
+
+fun pixelsToDp(context: Context, pixels: Float) =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, context.resources.displayMetrics)
+
+fun displayDimens(context: Context): DisplayMetrics {
+    val displayMetrics = DisplayMetrics()
+    val windowsManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    windowsManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics
+}

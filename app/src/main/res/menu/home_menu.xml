@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/options"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/main"
+            android:title="Main">
+            <menu>
+                <item
+                    android:id="@+id/home"
+                    android:title="Home"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/details"
+                    android:title="Detalles" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/other"
+            android:title="Otras opciones">
+            <menu>
+                <item
+                    android:id="@+id/settings"
+                    android:title="Ajustes"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/logout"
+                    android:title="Cerrar sesion" />
+            </menu>
+        </item>
+    </group>
+</menu>
