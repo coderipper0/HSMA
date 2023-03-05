@@ -2,10 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.HSMA" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/primary_100</item>
-        <item name="colorSurface">@color/primary_50</item>
-        <item name="colorOnSurface">@color/primary_900</item>
-        <item name="navigationViewStyle">@style/Widget.HSMA.NavigationView</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.HSMA.SmallComponent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant_dark</item>
+        <item name="colorSecondary">@color/primary_variant_light</item>
+        <item name="colorSurfaceVariant">@color/surface_variant_dark</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="textInputStyle">@style/Widget.HSMA.TextInputLayout</item>
     </style>
 </resources>

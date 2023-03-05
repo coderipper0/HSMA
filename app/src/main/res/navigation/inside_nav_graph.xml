@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inside_nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.coderipper.hsma.usecases.home.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/AccountFragment"
+        android:name="com.coderipper.hsma.usecases.account.AccountFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_account">
+    </fragment>
+
+    <action
+        android:id="@+id/to_home"
+        app:destination="@id/HomeFragment"/>
+
+    <action
+        android:id="@+id/to_account"
+        app:destination="@id/AccountFragment"/>
+</navigation>

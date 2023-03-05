@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textSize="55sp"
         android:textStyle="bold"
-        android:textColor="@color/primary_900"
+        android:textColor="@color/primary_variant_dark"
         android:layout_marginHorizontal="24dp"
         android:text="@string/hsma_text"
         android:layout_gravity="center"/>
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_variant_light"
         android:layout_marginTop="3dp"
         android:text="“Think Big,"
         android:layout_gravity="start|top"/>
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_variant_light"
         android:layout_marginBottom="3dp"
         android:text="Make It Big”"
         android:layout_gravity="end|bottom"/>

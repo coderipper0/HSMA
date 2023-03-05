@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
+import com.coderipper.hsma.R
 import com.coderipper.hsma.databinding.FragmentSignInBinding
-import com.coderipper.hsma.utils.createAvatarsModal
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -20,8 +20,6 @@ class SignInFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private lateinit var avatarsDialog: AlertDialog
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,21 +27,19 @@ class SignInFragment : Fragment() {
 
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
-            avatarBtn.setOnClickListener {
-                avatarsDialog = createAvatarsModal(requireContext(), ::selectedAvatar)
+            signInToolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
+
+            continueBtn.setOnClickListener {
+                findNavController().navigate(R.id.sign_in_to_details)
             }
         }
-    }
-
-    private fun selectedAvatar(imgId: Int) {
-        binding.avatarSelected.setImageResource(imgId)
-        avatarsDialog.dismiss()
     }
 
     override fun onDestroyView() {
