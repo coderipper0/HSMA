@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/main_item"
-        android:title="Cuenta">
+        android:title="Main">
         <menu>
             <item
                 android:id="@+id/home"
@@ -13,9 +13,29 @@
                 app:showAsAction="ifRoom"/>
 
             <item
+                android:id="@+id/hotels"
+                android:icon="@drawable/hotels"
+                android:title="Hoteles"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/account"
+        android:title="Cuenta">
+        <menu>
+            <item
                 android:id="@+id/details"
                 android:icon="@drawable/user"
-                android:title="Cuenta"
+                android:title="Detalles"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/payments"
+                android:icon="@drawable/payments"
+                android:title="Metodos de pago"
                 android:checkable="true"
                 app:showAsAction="ifRoom"/>
 

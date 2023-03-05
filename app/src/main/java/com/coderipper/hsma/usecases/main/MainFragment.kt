@@ -80,7 +80,9 @@ class MainFragment : Fragment() {
 
                 val directions = when (menuItem.itemId) {
                     R.id.home -> R.id.to_home
+                    R.id.hotels -> null
                     R.id.details -> R.id.to_account
+                    R.id.payments -> null
                     R.id.reservations -> null
                     R.id.settings -> null
                     R.id.logout -> {

@@ -5,10 +5,10 @@
     <color name="primary_variant_light">#FF89D9FC</color>
 
     <color name="background_light">#FFFFFBFA</color>
-    <color name="background_dark">#FF151515</color>
+    <color name="background_dark">#FF262626</color>
 
     <color name="surface_variant_light">#FFF4F7FE</color>
-    <color name="surface_variant_dark">#FF262626</color>
+    <color name="surface_variant_dark">#FF3B3B3B</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

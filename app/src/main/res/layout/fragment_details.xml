@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".usecases.signin.DetailsFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -14,170 +15,169 @@
             android:id="@+id/details_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:elevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@android:color/transparent">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/details_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/transparent"
-                android:elevation="0dp"
-                android:gravity="center"
                 app:navigationIcon="@drawable/arrow" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/details_bar">
-
-            <include layout="@layout/logo" />
-        </FrameLayout>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="48dp"
-            android:text="Detalles de cuenta"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_input_layout"
-            style="?attr/textInputFilledStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="50dp"
-            android:hint="Nombre"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/patronymic_layout"
-            style="?attr/textInputFilledStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="24dp"
-            android:hint="Apellido Paterno"
-            app:layout_constraintEnd_toEndOf="@+id/name_input_layout"
-            app:layout_constraintStart_toStartOf="@+id/name_input_layout"
-            app:layout_constraintTop_toBottomOf="@+id/name_input_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/patronymic_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/matronymic_layout"
-            style="?attr/textInputFilledStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="24dp"
-            android:hint="Apellido Materno"
-            app:layout_constraintEnd_toEndOf="@+id/patronymic_layout"
-            app:layout_constraintStart_toStartOf="@+id/patronymic_layout"
-            app:layout_constraintTop_toBottomOf="@+id/patronymic_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/matronymic_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/birth_input_layout"
-            style="?attr/textInputFilledStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="24dp"
-            android:hint="Fecha de nacimiento"
-            app:layout_constraintEnd_toEndOf="@+id/matronymic_layout"
-            app:layout_constraintStart_toStartOf="@+id/matronymic_layout"
-            app:layout_constraintTop_toBottomOf="@+id/matronymic_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/birth_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phone_input_layout"
-            style="?attr/textInputFilledStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="24dp"
-            android:hint="Teléfono"
-            app:layout_constraintEnd_toEndOf="@+id/birth_input_layout"
-            app:layout_constraintStart_toStartOf="@+id/birth_input_layout"
-            app:layout_constraintTop_toBottomOf="@+id/birth_input_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phone_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emergency_phone_input_layout"
-            style="?attr/textInputFilledStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="24dp"
-            android:hint="Teléfono de emergencia"
-            app:layout_constraintEnd_toEndOf="@+id/phone_input_layout"
-            app:layout_constraintStart_toStartOf="@+id/phone_input_layout"
-            app:layout_constraintTop_toBottomOf="@+id/phone_input_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emergency_phone_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:lines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/finish_btn"
-            style="@style/Widget.Material3.Button.ElevatedButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginVertical="100dp"
-            android:text="Finalizar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emergency_phone_input_layout" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <FrameLayout
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <include layout="@layout/logo" />
+            </FrameLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="48dp"
+                android:text="Detalles de cuenta"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_input_layout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="50dp"
+                android:hint="Nombre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/patronymic_layout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="24dp"
+                android:hint="Apellido Paterno"
+                app:layout_constraintEnd_toEndOf="@+id/name_input_layout"
+                app:layout_constraintStart_toStartOf="@+id/name_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/name_input_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/patronymic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/matronymic_layout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="24dp"
+                android:hint="Apellido Materno"
+                app:layout_constraintEnd_toEndOf="@+id/patronymic_layout"
+                app:layout_constraintStart_toStartOf="@+id/patronymic_layout"
+                app:layout_constraintTop_toBottomOf="@+id/patronymic_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/matronymic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/birth_input_layout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="24dp"
+                android:hint="Fecha de nacimiento"
+                app:layout_constraintEnd_toEndOf="@+id/matronymic_layout"
+                app:layout_constraintStart_toStartOf="@+id/matronymic_layout"
+                app:layout_constraintTop_toBottomOf="@+id/matronymic_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/birth_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phone_input_layout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="24dp"
+                android:hint="Teléfono"
+                app:layout_constraintEnd_toEndOf="@+id/birth_input_layout"
+                app:layout_constraintStart_toStartOf="@+id/birth_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/birth_input_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emergency_phone_input_layout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="24dp"
+                android:hint="Teléfono de emergencia"
+                app:layout_constraintEnd_toEndOf="@+id/phone_input_layout"
+                app:layout_constraintStart_toStartOf="@+id/phone_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/phone_input_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emergency_phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/finish_btn"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="100dp"
+                android:text="Finalizar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emergency_phone_input_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.core.widget.NestedScrollView>
