@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.coderipper.hsma.R
 import com.coderipper.hsma.databinding.FragmentMainBinding
 import com.coderipper.hsma.usecases.home.HomeViewModel
+import com.coderipper.hsma.utils.clearPreferences
 import com.coderipper.hsma.utils.linearInterpolation
 
 class MainFragment : Fragment() {
@@ -80,15 +81,21 @@ class MainFragment : Fragment() {
 
                 val directions = when (menuItem.itemId) {
                     R.id.home -> R.id.to_home
-                    R.id.hotels -> null
+                    R.id.hotels -> {
+                        findNavController().navigate(R.id.main_to_hotels)
+                        null
+                    }
+                    R.id.packages -> null
+                    R.id.activities -> null
                     R.id.details -> R.id.to_account
-                    R.id.payments -> null
-                    R.id.reservations -> null
+                    R.id.reservations -> R.id.to_reservations
                     R.id.settings -> null
                     R.id.logout -> {
                         findNavController().navigate(R.id.main_to_login)
+                        clearPreferences(requireActivity())
                         null
                     }
+                    R.id.help -> null
                     else -> null
                 }
 

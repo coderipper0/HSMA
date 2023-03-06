@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.coderipper.hsma.R
 import com.coderipper.hsma.databinding.FragmentLoginBinding
 import com.coderipper.hsma.databinding.FragmentStartBinding
+import com.coderipper.hsma.utils.saveValue
+import com.coderipper.hsma.utils.stringValue
 
 /**
  * A simple [Fragment] subclass.
@@ -34,6 +36,11 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val email = requireActivity().stringValue("email")
+        val password = requireActivity().stringValue("password")
+        if (!email.isNullOrEmpty() and !password.isNullOrEmpty())
+            findNavController().navigate(R.id.start_to_main)
 
         binding.run {
             signInBtn.setOnClickListener {

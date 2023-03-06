@@ -18,6 +18,20 @@
                 android:title="Hoteles"
                 android:checkable="true"
                 app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/packages"
+                android:icon="@drawable/packages"
+                android:title="Paquetes"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/activities"
+                android:icon="@drawable/activities"
+                android:title="Actividades"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
         </menu>
     </item>
 
@@ -29,13 +43,6 @@
                 android:id="@+id/details"
                 android:icon="@drawable/user"
                 android:title="Detalles"
-                android:checkable="true"
-                app:showAsAction="ifRoom"/>
-
-            <item
-                android:id="@+id/payments"
-                android:icon="@drawable/payments"
-                android:title="Metodos de pago"
                 android:checkable="true"
                 app:showAsAction="ifRoom"/>
 
@@ -63,6 +70,13 @@
                 android:id="@+id/logout"
                 android:icon="@drawable/logout"
                 android:title="Cerrar sesión"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/help"
+                android:title="Ayuda y soporte"
                 android:checkable="true"
                 app:showAsAction="ifRoom"/>
         </menu>

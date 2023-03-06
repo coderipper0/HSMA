@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.coderipper.hsma.R
 import com.coderipper.hsma.databinding.FragmentLoginBinding
+import com.coderipper.hsma.utils.saveValue
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -38,6 +39,12 @@ class LoginFragment : Fragment() {
 
             loginBtn.setOnClickListener {
                 findNavController().navigate(R.id.login_to_main)
+
+                val email = emailInput.text.toString().trim()
+                val password = passwordInput.text.toString().trim()
+
+                if (email.isNotEmpty() and password.isNotEmpty())
+                    saveValue(requireActivity(), hashMapOf("email" to email, "password" to password))
             }
         }
     }

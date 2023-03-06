@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.coderipper.hsma.R
 import com.coderipper.hsma.databinding.FragmentAccountBinding
 import com.coderipper.hsma.databinding.FragmentLoginBinding
@@ -43,16 +44,26 @@ class AccountFragment : Fragment() {
             val sectionsAdapter = SectionsAdapter(listOf(GeneralFragment(), PasswordFragment(), AddressFragment()), this@AccountFragment)
             sectionsPager.adapter = sectionsAdapter
 
-            selectionGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
-                val position = when (checkedId) {
-                    R.id.general_btn -> 0
-                    R.id.password_btn -> 1
-                    R.id.address_btn -> 2
-                    else -> 0
+            sectionsPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                    val id = when (position) {
+                        0 -> R.id.general_btn
+                        1 -> R.id.password_btn
+                        2 -> R.id.address_btn
+                        else -> R.id.general_btn
+                    }
+                    selectionGroup.check(id)
                 }
+            })
 
-                sectionsPager.currentItem = position
-            }
+            generalBtn.setOnClickListener { sectionsPager.currentItem = 0 }
+            passwordBtn.setOnClickListener { sectionsPager.currentItem = 1 }
+            addressBtn.setOnClickListener { sectionsPager.currentItem = 2 }
 
             updateFab.setOnClickListener {
                 Snackbar.make(binding.root, "Actualizado", Snackbar.LENGTH_LONG)
