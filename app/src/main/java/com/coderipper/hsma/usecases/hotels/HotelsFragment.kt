@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.coderipper.hsma.databinding.FragmentHotelsBinding
@@ -14,6 +15,10 @@ import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.core.util.Pair
+import com.coderipper.hsma.R
+import com.coderipper.hsma.usecases.hotels.filter.HotelFiltersFragment
+import com.google.android.material.sidesheet.SideSheetBehavior
+import com.google.android.material.sidesheet.SideSheetDialog
 
 /**
  * A simple [Fragment] subclass.
@@ -39,40 +44,53 @@ class HotelsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        //val sideSheetDialog = SideSheetDialog(requireContext())
+
 
         binding.run {
+            //sideSheetDialog.setContentView(filtersSideSheet)
+
             hotelsSearchBar.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
 
-            datesInput.setOnClickListener {
-                val constraintsBuilder =
-                    CalendarConstraints.Builder()
-                        .setValidator(DateValidatorPointForward.now())
-
-                val dateRangePickerBuilder =
-                    MaterialDatePicker.Builder.dateRangePicker()
-                        .setTitleText("Selecciona las fechas")
-                        .setCalendarConstraints(constraintsBuilder.build())
-
-                currentDates?.let { dateRangePickerBuilder.setSelection(currentDates) }
-                val dateRangePicker = dateRangePickerBuilder.build()
-
-                dateRangePicker.addOnPositiveButtonClickListener {
-                    currentDates = it
-                    val firstDate = Date(it.first)
-                    val secondDate = Date(it.second)
-
-                    val dateFormat = SimpleDateFormat("MMM d", Locale.US)
-                    val startDate = dateFormat.format(firstDate)
-                    val endDate = dateFormat.format(secondDate)
-                    val dates = "$startDate - $endDate"
-                    datesInput.setText(dates)
+            filtersBar.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.filter -> {
+                        //sideSheetDialog.show()
+                    }
                 }
-
-                dateRangePicker.show(parentFragmentManager, "Dates picker")
+                true
             }
+
+//
+//            datesInput.setOnClickListener {
+//                val constraintsBuilder =
+//                    CalendarConstraints.Builder()
+//                        .setValidator(DateValidatorPointForward.now())
+//
+//                val dateRangePickerBuilder =
+//                    MaterialDatePicker.Builder.dateRangePicker()
+//                        .setTitleText("Selecciona las fechas")
+//                        .setCalendarConstraints(constraintsBuilder.build())
+//
+//                currentDates?.let { dateRangePickerBuilder.setSelection(currentDates) }
+//                val dateRangePicker = dateRangePickerBuilder.build()
+//
+//                dateRangePicker.addOnPositiveButtonClickListener {
+//                    currentDates = it
+//                    val firstDate = Date(it.first)
+//                    val secondDate = Date(it.second)
+//
+//                    val dateFormat = SimpleDateFormat("MMM d", Locale.US)
+//                    val startDate = dateFormat.format(firstDate)
+//                    val endDate = dateFormat.format(secondDate)
+//                    val dates = "$startDate - $endDate"
+//                    datesInput.setText(dates)
+//                }
+//
+//                dateRangePicker.show(parentFragmentManager, "Dates picker")
+//          }
         }
     }
 
