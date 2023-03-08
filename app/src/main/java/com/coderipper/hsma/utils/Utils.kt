@@ -5,6 +5,9 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.WindowManager
 
+fun dpToPixels(context: Context, dp: Float) =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics)
+
 fun pixelsToDp(context: Context, pixels: Float) =
     TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, context.resources.displayMetrics)
 
