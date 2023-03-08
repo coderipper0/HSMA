@@ -52,6 +52,13 @@
                 android:title="Reservaciones"
                 android:checkable="true"
                 app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/report"
+                android:icon="@drawable/report"
+                android:title="Reportar evento"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
         </menu>
     </item>
 

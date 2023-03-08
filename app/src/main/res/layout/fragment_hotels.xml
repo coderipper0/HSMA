@@ -10,67 +10,252 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/back_container"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/hotels_bar"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/back_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.search.SearchBar
-                    android:id="@+id/hotels_search_bar"
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/hotels_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/transparent"
-                    android:hint="Buscar hotel"
-                    app:navigationIcon="@drawable/menu"/>
+                    android:background="@android:color/transparent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-            </com.google.android.material.appbar.AppBarLayout>
+                    <com.google.android.material.search.SearchBar
+                        android:id="@+id/hotels_search_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:hint="Buscar hotel"
+                        app:navigationIcon="@drawable/arrow"/>
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Material3.Button.TextButton"
-                android:id="@+id/hotels_btn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="2dp"
-                android:text="Hoteles"
-                app:layout_constraintTop_toBottomOf="@+id/hotels_bar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                </com.google.android.material.appbar.AppBarLayout>
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Material3.Button.TextButton"
-                android:id="@+id/hotels_packages_btn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginVertical="2dp"
-                android:text="Paquetes"
-                app:layout_constraintTop_toBottomOf="@+id/hotels_btn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/location_and_hotel_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:singleLine="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hotels_bar">
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Material3.Button.TextButton"
-                android:id="@+id/hotels_activities_btn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="16dp"
-                android:text="Actividades"
-                app:layout_constraintTop_toBottomOf="@+id/hotels_packages_btn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Input"
+                        android:id="@+id/location_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="Ubicación"
+                        app:closeIcon="@drawable/drop"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Input"
+                        android:id="@+id/hotel_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="Hotel"
+                        app:closeIcon="@drawable/drop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hotels_bar"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/types_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tipos de habitaciones"
+                    android:layout_margin="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/location_and_hotel_group"/>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/types_chips_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/types_title"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:id="@+id/gsuit_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gran suite"/>
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:id="@+id/suit_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suite"/>
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:id="@+id/jsuit_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Junior suite"/>
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:id="@+id/quadruple_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cuádruples"/>
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:id="@+id/double_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dobles"/>
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:id="@+id/single_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Individuales"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/chips_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:dividerInsetStart="16dp"
+                    app:dividerInsetEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/types_chips_group"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/checks_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Extras"
+                    android:layout_margin="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chips_divider" />
+
+                <CheckBox
+                    android:id="@+id/activities_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Tiene actividades"
+                    app:layout_constraintTop_toBottomOf="@+id/checks_title"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <CheckBox
+                    android:id="@+id/packages_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Tiene paquetes"
+                    app:layout_constraintTop_toBottomOf="@+id/activities_check"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/checks_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:dividerInsetStart="16dp"
+                    app:dividerInsetEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/packages_check"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/stars_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estrellas"
+                    android:layout_margin="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checks_divider" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/stars_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="12sp"
+                    android:text="1"
+                    app:layout_constraintStart_toEndOf="@+id/stars_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/stars_title"/>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/stars_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:valueFrom="1.0"
+                    android:valueTo="5.0"
+                    android:stepSize="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stars_title"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/stars_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:dividerInsetStart="16dp"
+                    app:dividerInsetEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/stars_slider"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/price_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Precio"
+                    android:layout_margin="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stars_divider" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="12sp"
+                    android:text="MX$0 - MX5,000"
+                    app:layout_constraintStart_toEndOf="@+id/price_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/price_title"/>
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/price_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:valueFrom="0.0"
+                    android:valueTo="10000.0"
+                    android:stepSize="100.0"
+                    app:values="@array/initial_slider_price_values"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/price_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/front_container"
@@ -136,7 +321,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/Widget.Material3.BottomSheet"
-        android:id="@+id/filters_bottom_sheet"
+        android:id="@+id/search_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="12dp"
@@ -154,209 +339,56 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/search_sheet_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Filtros"
-            android:textSize="18sp"
+            android:text="Elemento"
+            android:textSize="12sp"
             app:layout_constraintTop_toTopOf="@id/close_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/close_btn"
             app:layout_constraintBottom_toBottomOf="@id/close_btn"/>
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/top_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:dividerInsetStart="16dp"
-            app:dividerInsetEnd="16dp"
             app:layout_constraintTop_toBottomOf="@+id/close_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/types_title"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:id="@+id/element_search_layout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Tipos de habitaciones"
-            android:layout_margin="16dp"
+            android:hint="Buscar ubicación"
+            app:layout_constraintTop_toBottomOf="@+id/top_divider"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_divider" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/types_chips_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/types_title"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/gsuit_chip"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/element_search_input"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gran suite"/>
+                android:textSize="12sp"
+                android:inputType="text"
+                android:background="@android:color/transparent"
+                android:lines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/suit_chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Suite"/>
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/jsuit_chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Junior suite"/>
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/quadruple_chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cuádruples"/>
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/double_chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dobles"/>
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/single_chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Individuales"/>
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/chips_divider"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/elements_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:dividerInsetStart="16dp"
-            app:dividerInsetEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/types_chips_group"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/element_search_layout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/checks_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Extras"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chips_divider" />
-
-        <CheckBox
-            android:id="@+id/activities_check"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Tiene actividades"
-            app:layout_constraintTop_toBottomOf="@+id/checks_title"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <CheckBox
-            android:id="@+id/packages_check"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:text="Tiene paquetes"
-            app:layout_constraintTop_toBottomOf="@+id/activities_check"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/checks_divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:dividerInsetStart="16dp"
-            app:dividerInsetEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/packages_check"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/stars_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estrellas"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checks_divider" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/stars_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="12sp"
-            android:text="1"
-            app:layout_constraintStart_toEndOf="@+id/stars_title"
-            app:layout_constraintBottom_toBottomOf="@+id/stars_title"/>
-
-        <com.google.android.material.slider.Slider
-            android:id="@+id/stars_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:valueFrom="1.0"
-            android:valueTo="5.0"
-            android:stepSize="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stars_title"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/stars_divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:dividerInsetStart="16dp"
-            app:dividerInsetEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/stars_slider"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/price_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Precio"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stars_divider" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/price_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="12sp"
-            android:text="MX$0 - MX5,000"
-            app:layout_constraintStart_toEndOf="@+id/price_title"
-            app:layout_constraintBottom_toBottomOf="@+id/price_title"/>
-
-        <com.google.android.material.slider.RangeSlider
-            android:id="@+id/price_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:valueFrom="0.0"
-            android:valueTo="10000.0"
-            android:stepSize="100.0"
-            app:values="@array/initial_slider_price_values"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_title"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:itemCount="6"
+            tools:listitem="@layout/element_item"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
