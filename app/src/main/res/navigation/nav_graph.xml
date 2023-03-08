@@ -81,5 +81,10 @@
         android:name="com.coderipper.hsma.usecases.hotels.HotelsFragment"
         android:label="Hotels"
         tools:layout="@layout/fragment_hotels">
+
+        <argument
+            android:name="section"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

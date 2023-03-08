@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -82,11 +83,20 @@ class MainFragment : Fragment() {
                 val directions = when (menuItem.itemId) {
                     R.id.home -> R.id.to_home
                     R.id.hotels -> {
-                        findNavController().navigate(R.id.main_to_hotels)
+                        val bundle = bundleOf("section" to 0)
+                        findNavController().navigate(R.id.main_to_hotels, bundle)
                         null
                     }
-                    R.id.packages -> null
-                    R.id.activities -> null
+                    R.id.packages -> {
+                        val bundle = bundleOf("section" to 1)
+                        findNavController().navigate(R.id.main_to_hotels, bundle)
+                        null
+                    }
+                    R.id.activities -> {
+                        val bundle = bundleOf("section" to 2)
+                        findNavController().navigate(R.id.main_to_hotels, bundle)
+                        null
+                    }
                     R.id.details -> R.id.to_account
                     R.id.reservations -> R.id.to_reservations
                     R.id.settings -> null

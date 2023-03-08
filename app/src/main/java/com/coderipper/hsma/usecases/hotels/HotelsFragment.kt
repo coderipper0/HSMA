@@ -1,24 +1,27 @@
 package com.coderipper.hsma.usecases.hotels
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.util.Pair
+import androidx.core.view.isVisible
+import androidx.dynamicanimation.animation.DynamicAnimation
+import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.coderipper.hsma.databinding.FragmentHotelsBinding
-import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointForward
-import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.snackbar.Snackbar
-import java.text.SimpleDateFormat
-import java.util.*
-import androidx.core.util.Pair
 import com.coderipper.hsma.R
-import com.coderipper.hsma.usecases.hotels.filter.HotelFiltersFragment
-import com.google.android.material.sidesheet.SideSheetBehavior
-import com.google.android.material.sidesheet.SideSheetDialog
+import com.coderipper.hsma.databinding.FragmentHotelsBinding
+import com.coderipper.hsma.utils.dpToPixels
+import com.coderipper.hsma.utils.objectAnimation
+import com.coderipper.hsma.utils.springAnimation
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.text.NumberFormat
+import java.util.*
+
 
 /**
  * A simple [Fragment] subclass.
@@ -44,23 +47,76 @@ class HotelsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //val sideSheetDialog = SideSheetDialog(requireContext())
-
-
         binding.run {
-            //sideSheetDialog.setContentView(filtersSideSheet)
+            val section = arguments?.getInt("section")
+
+            setSectionSearch(section)
+
+
+            val filtersBottomSheet = BottomSheetBehavior.from(filtersBottomSheet)
+            filtersBottomSheet.isDraggable = false
+            filtersBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
+
+            val format = NumberFormat.getCurrencyInstance()
+            format.maximumFractionDigits = 0
+            format.currency = Currency.getInstance("MXN")
 
             hotelsSearchBar.setNavigationOnClickListener {
-                findNavController().popBackStack()
+                if (!scrim.isVisible) {
+                    scrim.isVisible = true
+
+                    val endPosition = backContainer.height.toFloat() - dpToPixels(requireContext(), 90F)
+                    //frontContainer.springAnimation(DynamicAnimation.TRANSLATION_Y, finalPosition, 800F).start()
+                    frontContainer.objectAnimation("translationY", 0F, endPosition, 300).start()
+
+                    val drawable = ResourcesCompat.getDrawable(resources, R.drawable.arrow, null)
+                    hotelsSearchBar.navigationIcon = drawable
+                } else findNavController().popBackStack()
+            }
+
+            scrim.setOnClickListener {
+                closeBackdrop()
+            }
+
+            hotelsBtn.setOnClickListener {
+                closeBackdrop(0)
+            }
+
+            hotelsPackagesBtn.setOnClickListener {
+                closeBackdrop(1)
+            }
+
+            hotelsActivitiesBtn.setOnClickListener {
+                closeBackdrop(2)
             }
 
             filtersBar.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.filter -> {
-                        //sideSheetDialog.show()
+                        filtersBottomSheet.state = BottomSheetBehavior.STATE_EXPANDED
                     }
                 }
                 true
+            }
+
+            closeBtn.setOnClickListener {
+                filtersBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
+            }
+
+            starsSlider.addOnChangeListener { _, value, _ ->
+                val stars = value.toInt()
+                starsText.text = "$stars"
+            }
+
+            priceSlider.setLabelFormatter { value: Float ->
+                format.format(value.toDouble())
+            }
+
+            priceSlider.addOnChangeListener { rangeSlider, _, _ ->
+                val values = rangeSlider.values
+                val startPrice = format.format(values[0].toDouble())
+                val endPrice = format.format(values[1].toDouble())
+                priceText.text = "$startPrice - $endPrice"
             }
 
 //
@@ -91,6 +147,45 @@ class HotelsFragment : Fragment() {
 //
 //                dateRangePicker.show(parentFragmentManager, "Dates picker")
 //          }
+        }
+    }
+
+    private fun setSectionSearch(section: Int? = null) {
+        binding.run {
+            when (section) {
+                0 -> {
+                    packagesCheck.isVisible = true
+                    starsTitle.text = "Estrellas"
+                    hotelsSearchBar.hint = "Buscar hoteles"
+                }
+                1 -> {
+                    packagesCheck.isVisible = false
+                    starsTitle.text = "Puntuación"
+                    hotelsSearchBar.hint = "Buscar paquetes"
+                }
+                2 -> {
+                    activitiesCheck.isVisible = false
+                    packagesCheck.isVisible = false
+                    checksDivider.isVisible = false
+                    checksTitle.isVisible = false
+                    starsTitle.text = "Puntuación"
+                    hotelsSearchBar.hint = "Buscar actividades"
+                }
+            }
+        }
+    }
+
+    private fun closeBackdrop(section: Int? = null) {
+        binding.run {
+            scrim.isVisible = false
+            val startPosition = backContainer.height.toFloat() - dpToPixels(requireContext(), 90F)
+            frontContainer.objectAnimation("translationY", startPosition, 0F, 300).start()
+            //frontContainer.springAnimation(DynamicAnimation.TRANSLATION_Y, 0F, 800F).start()
+
+            setSectionSearch(section)
+
+            val drawable = ResourcesCompat.getDrawable(resources, R.drawable.menu, null)
+            hotelsSearchBar.navigationIcon = drawable
         }
     }
 
