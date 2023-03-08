@@ -78,9 +78,9 @@
 
     <fragment
         android:id="@+id/HotelsFragment"
-        android:name="com.coderipper.hsma.usecases.hotels.HotelsFragment"
+        android:name="com.coderipper.hsma.usecases.elements.ElementsFragment"
         android:label="Hotels"
-        tools:layout="@layout/fragment_hotels">
+        tools:layout="@layout/fragment_elements">
 
         <argument
             android:name="section"

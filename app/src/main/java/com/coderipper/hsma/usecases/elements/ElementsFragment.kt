@@ -1,17 +1,15 @@
-package com.coderipper.hsma.usecases.hotels
+package com.coderipper.hsma.usecases.elements
 
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.util.Pair
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.coderipper.hsma.R
-import com.coderipper.hsma.databinding.FragmentHotelsBinding
+import com.coderipper.hsma.databinding.FragmentElementsBinding
 import com.coderipper.hsma.utils.displayDimens
 import com.coderipper.hsma.utils.dpToPixels
 import com.coderipper.hsma.utils.objectAnimation
@@ -22,12 +20,12 @@ import java.util.*
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HotelsFragment.newInstance] factory method to
+ * Use the [ElementsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HotelsFragment : Fragment() {
+class ElementsFragment : Fragment() {
 
-    private var _binding: FragmentHotelsBinding? = null
+    private var _binding: FragmentElementsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,7 +37,7 @@ class HotelsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHotelsBinding.inflate(inflater, container, false)
+        _binding = FragmentElementsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -57,7 +55,7 @@ class HotelsFragment : Fragment() {
             format.maximumFractionDigits = 0
             format.currency = Currency.getInstance("MXN")
 
-            hotelsSearchBar.setNavigationOnClickListener {
+            elementsSearchBar.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
 
@@ -143,13 +141,15 @@ class HotelsFragment : Fragment() {
                     hotelChip.isVisible = false
                     packagesCheck.isVisible = true
                     starsTitle.text = "Estrellas"
-                    hotelsSearchBar.hint = "Buscar hoteles"
+                    elementsSearchBar.hint = "Buscar hoteles"
+                    elementsSearchView.hint = "Buscar hoteles"
                 }
                 1 -> {
                     hotelChip.isVisible = true
                     packagesCheck.isVisible = false
                     starsTitle.text = "Puntuación"
-                    hotelsSearchBar.hint = "Buscar paquetes"
+                    elementsSearchBar.hint = "Buscar paquetes"
+                    elementsSearchView.hint = "Buscar paquetes"
                 }
                 2 -> {
                     hotelChip.isVisible = true
@@ -158,7 +158,8 @@ class HotelsFragment : Fragment() {
                     checksDivider.isVisible = false
                     checksTitle.isVisible = false
                     starsTitle.text = "Puntuación"
-                    hotelsSearchBar.hint = "Buscar actividades"
+                    elementsSearchBar.hint = "Buscar actividades"
+                    elementsSearchView.hint = "Buscar actividades"
                 }
             }
         }

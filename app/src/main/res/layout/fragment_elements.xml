@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".usecases.hotels.HotelsFragment">
+    tools:context=".usecases.elements.ElementsFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.appbar.AppBarLayout
-                    android:id="@+id/hotels_bar"
+                    android:id="@+id/elements_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -29,11 +29,11 @@
                     app:layout_constraintEnd_toEndOf="parent">
 
                     <com.google.android.material.search.SearchBar
-                        android:id="@+id/hotels_search_bar"
+                        android:id="@+id/elements_search_bar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/transparent"
-                        android:hint="Buscar hotel"
+                        android:hint="Buscar elemento"
                         app:navigationIcon="@drawable/arrow"/>
 
                 </com.google.android.material.appbar.AppBarLayout>
@@ -45,7 +45,7 @@
                     android:layout_margin="16dp"
                     app:singleLine="true"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/hotels_bar">
+                    app:layout_constraintTop_toBottomOf="@+id/elements_bar">
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.Material3.Chip.Input"
@@ -286,7 +286,7 @@
                 </com.google.android.material.appbar.AppBarLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/hotels_list"
+                    android:id="@+id/elements_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -311,11 +311,12 @@
     </FrameLayout>
 
     <com.google.android.material.search.SearchView
+        android:id="@+id/elements_search_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="Buscar hotel"
+        android:hint="Buscar elemento"
         android:elevation="12dp"
-        app:layout_anchor="@id/hotels_search_bar">
+        app:layout_anchor="@id/elements_search_bar">
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
     </com.google.android.material.search.SearchView>
 
@@ -377,7 +378,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/elements_list"
+            android:id="@+id/elements_search_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
