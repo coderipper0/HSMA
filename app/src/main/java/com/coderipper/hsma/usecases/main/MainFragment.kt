@@ -99,7 +99,7 @@ class MainFragment : Fragment() {
                     }
                     R.id.details -> R.id.to_account
                     R.id.reservations -> R.id.to_reservations
-                    R.id.report -> null
+                    R.id.report -> R.id.to_reports
                     R.id.settings -> null
                     R.id.logout -> {
                         findNavController().navigate(R.id.main_to_login)

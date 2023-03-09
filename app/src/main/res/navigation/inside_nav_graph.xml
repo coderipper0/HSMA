@@ -26,6 +26,13 @@
         tools:layout="@layout/fragment_reservations">
     </fragment>
 
+    <fragment
+        android:id="@+id/ReportsFragment"
+        android:name="com.coderipper.hsma.usecases.reports.ReportsFragment"
+        android:label="Reports"
+        tools:layout="@layout/fragment_reports">
+    </fragment>
+
     <action
         android:id="@+id/to_home"
         app:destination="@id/HomeFragment"/>
@@ -37,4 +44,8 @@
     <action
         android:id="@+id/to_reservations"
         app:destination="@id/ReservationsFragment"/>
+
+    <action
+        android:id="@+id/to_reports"
+        app:destination="@id/ReportsFragment"/>
 </navigation>

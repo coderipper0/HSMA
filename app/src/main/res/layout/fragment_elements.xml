@@ -236,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:textSize="12sp"
-                    android:text="MX$0 - MX5,000"
+                    android:text="<= MX$0 - MX5,000 >="
                     app:layout_constraintStart_toEndOf="@+id/price_title"
                     app:layout_constraintBottom_toBottomOf="@+id/price_title"/>
 
@@ -245,9 +245,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:valueFrom="0.0"
-                    android:valueTo="10000.0"
-                    android:stepSize="100.0"
+                    android:valueFrom="1000.0"
+                    android:valueTo="8000.0"
+                    android:stepSize="1000.0"
                     app:values="@array/initial_slider_price_values"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/price_title"

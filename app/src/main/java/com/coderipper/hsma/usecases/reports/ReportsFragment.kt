@@ -1,4 +1,4 @@
-package com.coderipper.hsma.usecases.reservations
+package com.coderipper.hsma.usecases.reports
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,17 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.coderipper.hsma.R
-import com.coderipper.hsma.databinding.FragmentHomeBinding
+import com.coderipper.hsma.databinding.FragmentReportsBinding
 import com.coderipper.hsma.databinding.FragmentReservationsBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ReservationsFragment.newInstance] factory method to
+ * Use the [ReportsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ReservationsFragment : Fragment() {
+class ReportsFragment : Fragment() {
 
-    private var _binding: FragmentReservationsBinding? = null
+    private var _binding: FragmentReportsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,7 +27,7 @@ class ReservationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentReservationsBinding.inflate(inflater, container, false)
+        _binding = FragmentReportsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
