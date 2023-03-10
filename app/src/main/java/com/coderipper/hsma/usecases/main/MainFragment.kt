@@ -83,17 +83,11 @@ class MainFragment : Fragment() {
                 val directions = when (menuItem.itemId) {
                     R.id.home -> R.id.to_home
                     R.id.hotels -> {
-                        val bundle = bundleOf("section" to 0)
-                        findNavController().navigate(R.id.main_to_hotels, bundle)
+                        findNavController().navigate(R.id.main_to_reserve)
                         null
                     }
                     R.id.packages -> {
                         val bundle = bundleOf("section" to 1)
-                        findNavController().navigate(R.id.main_to_hotels, bundle)
-                        null
-                    }
-                    R.id.activities -> {
-                        val bundle = bundleOf("section" to 2)
                         findNavController().navigate(R.id.main_to_hotels, bundle)
                         null
                     }

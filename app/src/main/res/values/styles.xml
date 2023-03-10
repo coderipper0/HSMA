@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.HSMA.LoginLayer" parent="Widget.Material3.CardView.Elevated">
-        <item name="shapeAppearance">@style/ShapeAppearance.HSMA.LoginLayer</item>
+    <style name="Widget.HSMA.FrontBackdrop" parent="Widget.Material3.CardView.Elevated">
+        <item name="shapeAppearance">@style/ShapeAppearance.HSMA.FrontBackdrop</item>
     </style>
 
-    <style name="ShapeAppearance.HSMA.LoginLayer" parent="ShapeAppearance.Material3.MediumComponent">
+    <style name="ShapeAppearance.HSMA.FrontBackdrop" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeBottomLeft">50dp</item>
+        <item name="cornerSizeTopLeft">50dp</item>
+        <item name="cornerSizeTopRight">50dp</item>
     </style>
 
     <style name="Widget.HSMA.Button.OutlinedButton.IconOnly" parent="Widget.Material3.Button.OutlinedButton">

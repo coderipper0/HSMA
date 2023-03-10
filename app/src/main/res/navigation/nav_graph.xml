@@ -74,6 +74,10 @@
         <action
             android:id="@+id/main_to_hotels"
             app:destination="@id/HotelsFragment"/>
+
+        <action
+            android:id="@+id/main_to_reserve"
+            app:destination="@id/ReserveDetailsFragment"/>
     </fragment>
 
     <fragment
@@ -86,5 +90,12 @@
             android:name="section"
             app:argType="integer"
             android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ReserveDetailsFragment"
+        android:name="com.coderipper.hsma.usecases.elements.ReserveDetailsFragment"
+        android:label="Reserve"
+        tools:layout="@layout/fragment_reserve_details">
     </fragment>
 </navigation>

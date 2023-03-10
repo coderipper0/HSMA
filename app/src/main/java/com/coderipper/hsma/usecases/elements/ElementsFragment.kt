@@ -96,7 +96,7 @@ class ElementsFragment : Fragment() {
                 val values = rangeSlider.values
                 val startPrice = format.format(values[0].toDouble())
                 val endPrice = format.format(values[1].toDouble())
-                priceText.text = "<= $startPrice - $endPrice >="
+                priceText.text = "$startPrice - $endPrice"
             }
 
             closeBtn.setOnClickListener {

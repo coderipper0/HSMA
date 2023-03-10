@@ -25,13 +25,6 @@
                 android:title="Paquetes"
                 android:checkable="true"
                 app:showAsAction="ifRoom"/>
-
-            <item
-                android:id="@+id/activities"
-                android:icon="@drawable/activities"
-                android:title="Actividades"
-                android:checkable="true"
-                app:showAsAction="ifRoom"/>
         </menu>
     </item>
 
