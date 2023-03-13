@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.coderipper.hsma.R
+import com.coderipper.hsma.databinding.DialogQuantityBinding
 import com.coderipper.hsma.databinding.FragmentReserveDetailsBinding
-import com.coderipper.hsma.usecases.elements.dialog.DialogQuantityFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 /**
  * A simple [Fragment] subclass.
@@ -35,17 +38,40 @@ class ReserveDetailsFragment : Fragment() {
 
         binding.run {
             quantityInput.setOnClickListener {
-                val fragmentTransition = parentFragmentManager.beginTransaction()
-                val prev = parentFragmentManager.findFragmentByTag("qty_dialog")
-                if (prev != null) {
-                    fragmentTransition.remove(prev)
-                }
-                fragmentTransition.addToBackStack(null)
-
-                val newFragment = DialogQuantityFragment.newInstance()
-                newFragment.show(fragmentTransition, "qty_dialog")
+                createDialog()
             }
         }
+    }
+
+    private fun createDialog() {
+        val dialogBinding = DialogQuantityBinding.inflate(LayoutInflater.from(context), null, false)
+
+        val materialDialog = MaterialAlertDialogBuilder(requireContext())
+        materialDialog.setView(dialogBinding.root)
+        materialDialog.setTitle("Cantidad de huespedes")
+        materialDialog.setPositiveButton("Ok") { dialog, which ->
+
+        }
+
+        dialogBinding.run {
+            adultsDecrement.setOnClickListener {
+                val qtyAdults = adultsQty.text.toString().toIntOrNull()
+
+                if (qtyAdults != null) {
+                    if (qtyAdults > 1) adultsQty.text = (qtyAdults - 1).toString()
+                }
+            }
+
+            adultsIncrement.setOnClickListener {
+                val qtyAdults = adultsQty.text.toString().toIntOrNull()
+
+                if (qtyAdults != null) {
+                    if (qtyAdults < 4) adultsQty.text = (qtyAdults + 1).toString()
+                }
+            }
+        }
+
+        materialDialog.show()
     }
 
     override fun onDestroyView() {
